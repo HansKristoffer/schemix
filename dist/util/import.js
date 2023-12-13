@@ -84,7 +84,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importAllFiles = exports.importFilteredFiles = void 0;
+exports.importAllFiles = void 0;
 var promises_1 = require("fs/promises");
 var path_1 = require("path");
 var isDirectory = function (fullPath) { return __awaiter(void 0, void 0, void 0, function () {
@@ -148,11 +148,10 @@ var importFilteredFiles = function (filePaths) {
         return accumulator;
     }, []);
 };
-exports.importFilteredFiles = importFilteredFiles;
 var importAllFiles = function (basePath, folderName) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         return [2 /*return*/, getAllFilesRecursively(basePath, folderName).then(function (files) {
-                return Promise.all((0, exports.importFilteredFiles)(files));
+                return Promise.all(importFilteredFiles(files));
             })];
     });
 }); };
