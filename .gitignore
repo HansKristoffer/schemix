@@ -1,6 +1,5 @@
 coverage/
 node_modules/
-dist/
 _test.ts
 _test.prisma
 

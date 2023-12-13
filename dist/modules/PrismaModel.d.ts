@@ -1,0 +1,35 @@
+import { PrismaEnum } from "../modules/PrismaEnum";
+import { PrismaSchema } from "../modules/PrismaSchema";
+import { BooleanFieldOptions, CompositeIDFieldOptions, CompositeUniqueFieldOptions, DateTimeFieldOptions, DecimalFieldOptions, EnumFieldOptions, FloatFieldOptions, IntFieldOptions, JsonFieldOptions, ModelMapOptions, RelationalFieldOptions, StringFieldOptions, Comment } from "../typings/prisma-type-options";
+export declare class PrismaModel {
+    readonly name?: string | null | undefined;
+    private readonly schema?;
+    private fields;
+    private blockAttributes;
+    private rawFields;
+    private comments;
+    constructor(name?: string | null, schema?: PrismaSchema);
+    constructor(name?: string | null);
+    comment(...comments: Comment[]): this;
+    string(fieldName: string, options?: StringFieldOptions): this;
+    int(fieldName: string, options?: IntFieldOptions): this;
+    bigInt(fieldName: string, options?: IntFieldOptions): this;
+    decimal(fieldName: string, options?: DecimalFieldOptions): this;
+    float(fieldName: string, options?: FloatFieldOptions): this;
+    boolean(fieldName: string, options?: BooleanFieldOptions): this;
+    dateTime(fieldName: string, options?: DateTimeFieldOptions): this;
+    json(fieldName: string, options?: JsonFieldOptions): this;
+    enum(fieldName: string, prismaEnum: PrismaEnum, options?: EnumFieldOptions): this;
+    relation(fieldName: string, model: PrismaModel, options?: RelationalFieldOptions): this;
+    id(options: CompositeIDFieldOptions): this;
+    unique(options: CompositeUniqueFieldOptions): this;
+    map(options: ModelMapOptions): this;
+    mixin(model: PrismaModel): this;
+    raw(fieldText: string): this;
+    extend(name: string): PrismaModel;
+    toString(): Promise<string>;
+    private createRelation;
+    private createEnumField;
+    private createField;
+    private parseFields;
+}
