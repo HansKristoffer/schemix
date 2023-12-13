@@ -9,7 +9,7 @@ import {
   PrismaGeneratorOptions,
   PrismaMultiGeneratorOptions,
 } from "typings/prisma-generator";
-import { importAllFiles } from "util/import";
+import { importAllFiles, importFilteredFiles } from "util/import";
 
 export class PrismaSchema {
   private enums: Map<string, PrismaEnum> = new Map();
@@ -117,11 +117,7 @@ export class PrismaSchema {
       }
 
       if (this.additionalPaths) {
-        await Promise.all(
-          this.additionalPaths.map(async (path) => {
-            await importAllFiles(path, "prisma");
-          })
-        );
+        await Promise.all(importFilteredFiles(this.additionalPaths))
       }
 
       process.nextTick(() => {

@@ -45,7 +45,7 @@ const getAllFilesRecursively = async (
   return [...filesInDirectories, ...files];
 };
 
-const importFilteredFiles = (filePaths: string[]): Promise<unknown>[] => {
+export const importFilteredFiles = (filePaths: string[]): Promise<unknown>[] => {
   return filePaths.reduce((accumulator: Promise<unknown>[], filePath) => {
     if (
       filePath.endsWith(".d.ts.map") ||
